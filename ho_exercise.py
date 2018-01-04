@@ -5,8 +5,6 @@ Muhammad Hamiz Ahmed <hamizahmed93@gmail.com>
 This is the code for Deep Learning Lab Exercise 5
 """
 
-
-
 import pickle
 import numpy as np
 import copy
@@ -61,8 +59,7 @@ def runtime(x, epoch=40):
     return y
 
 
-def optimize_random_serch(bounds):
-
+def optimize_random_search(bounds):
     D = len(bounds)  # number of decision variables
     best_output = 9999.0  # initialize the "best found" - both the function value and the x values
     best_runtime = 999999.0
@@ -72,9 +69,6 @@ def optimize_random_serch(bounds):
     incumbents_runtime = np.zeros((10, 50))
 
     for k in range(10):
-
-
-
         for i in range(50):
             new_configuration = [rand.randint(bounds[d][0], bounds[d][1]) for d in range(D)]
             new_output = objective_function(new_configuration)
@@ -102,7 +96,7 @@ def run_random_search():
 
     bounds = [learning_rate_bound, batch_size_bound, filter_layer_bound, filter_layer_bound, filter_layer_bound]
 
-    performance, runtimes = optimize_random_serch(bounds)
+    performance, runtimes = optimize_random_search(bounds)
 
     return performance, runtimes
 
